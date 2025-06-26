@@ -181,14 +181,14 @@ const App: React.FC = () => {
       />
 
       {/* Main Content */}
-      <Box position="relative" zIndex="2">
-        <Container maxW="container.md" py={20}>
-          <VStack spacing={12} textAlign="center">
+      <Box position="relative" zIndex="2" display="flex" justifyContent="center" alignItems="center" minH="100vh">
+        <Container maxW="container.md" py={20} mx="auto">
+          <VStack spacing={12} textAlign="center" align="center" justify="center">
             {/* Header Section */}
-            <VStack spacing={6}>
+            <VStack spacing={6} align="center">
               <Heading
                 as="h1"
-                size="2xl"
+                size="4xl"
                 color="white"
                 fontWeight="bold"
                 textShadow="2px 2px 4px rgba(0,0,0,0.3)"
@@ -197,13 +197,14 @@ const App: React.FC = () => {
                 Nomi
               </Heading>
               <Text
-                fontSize="l"
+                fontSize="xl"
                 color="white"
                 maxW="md"
                 textShadow="1px 1px 2px rgba(0,0,0,0.3)"
                 _hover={{ transform: 'scale(1.02)', transition: 'transform 0.3s ease' }}
               >
-                Plan dinner parties, road trips, and fridge-fueled cook-offs right in the comfort of your WhatsApp
+                Plan dinner parties, road trips, and fridge-fueled cook-offs,
+                all in the comfort of your WhatsApp.
               </Text>
             </VStack>
 
@@ -216,6 +217,7 @@ const App: React.FC = () => {
               boxShadow="xl"
               w="full"
               maxW="md"
+              mx="auto"
               border="1px solid rgba(255, 255, 255, 0.2)"
               _hover={{
                 transform: 'translateY(-5px)',
@@ -285,7 +287,7 @@ const App: React.FC = () => {
             </Box>
 
             {/* Footer Section */}
-            <VStack spacing={4}>
+            <VStack spacing={4} align="center">
               <Text
                 fontSize="sm"
                 color="white"
