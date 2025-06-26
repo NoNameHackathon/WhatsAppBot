@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  whatsapp-bot-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Alternative: Use Dockerfile.ubuntu for Ubuntu-based image
+      # dockerfile: Dockerfile.ubuntu
+    container_name: whatsapp-bot-web
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    environment:
+      # Node environment (can be overridden by .env)
+      - NODE_ENV=${NODE_ENV:-production}
+    volumes:
+      # Persist WhatsApp session data
+      - whatsapp-auth:/app/.wwebjs_auth
+      - whatsapp-cache:/app/.wwebjs_cache
+    restart: unless-stopped
+    # Uncomment if using MongoDB
+    # depends_on:
+    #   - mongo
+
+  # Optional: MongoDB service (uncomment if needed)
+  # mongo:
+  #   image: mongo:6
+  #   container_name: whatsapp-bot-mongo
+  #   ports:
+  #     - "27017:27017"
+  #   env_file:
+  #     - .env
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
+  #     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-password}
+  #     - MONGO_INITDB_DATABASE=${MONGO_DATABASE:-whatsapp-bot}
+  #   volumes:
+  #     - mongo-data:/data/db
+  #   restart: unless-stopped
+
+volumes:
+  whatsapp-auth:
+  whatsapp-cache:
+  # mongo-data: 

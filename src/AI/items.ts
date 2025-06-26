@@ -14,7 +14,7 @@ async function getLoblawsProducts(requiredItem: string): Promise<Item[]> {
     console.log("Getting Loblaws products for: ", requiredItem);
     const products = [
         {
-            productName: "Loblaws Toilet Paper",
+            productName: `Loblaws ${requiredItem}`,
             productPrice: 10.99,
             productURL: "https://www.loblaws.ca/product/1234567890"
         },

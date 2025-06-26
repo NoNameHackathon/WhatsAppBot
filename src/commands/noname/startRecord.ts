@@ -5,7 +5,7 @@ import { ConversationRecord, RecordStatus } from '../../models/Record';
 const startRecordCommand: IBotCommand = {
   name: 'startRecord',
   description: 'Starts recording a conversation for summary generation',
-  aliases: ['start-record', 'record'],
+  aliases: ['start-record', 'record', 'start'],
   category: CommandCategory.NONAME,
   
   async execute(message: Message, _args: string[], _client: Client): Promise<void> {

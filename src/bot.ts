@@ -4,6 +4,7 @@ import * as qrcode from 'qrcode-terminal';
 import { CommandHandler } from './utils/commandHandler';
 import { db } from './utils/database';
 import { IBotConfig, MessageDirection } from './types';
+import { v4 as uuidv4 } from 'uuid';
 
 export class WhatsAppBot {
   private client: Client;
@@ -32,8 +33,54 @@ export class WhatsAppBot {
           '--no-first-run',
           '--no-zygote',
           '--single-process',
-          '--disable-gpu'
-        ]
+          '--disable-gpu',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor',
+          '--disable-background-timer-throttling',
+          '--disable-backgrounding-occluded-windows',
+          '--disable-renderer-backgrounding',
+          '--disable-field-trial-config',
+          '--disable-ipc-flooding-protection',
+          '--disable-background-networking',
+          '--disable-default-apps',
+          '--disable-extensions',
+          '--disable-sync',
+          '--disable-translate',
+          '--hide-scrollbars',
+          '--mute-audio',
+          '--no-default-browser-check',
+          '--no-pings',
+          '--no-zygote',
+          '--disable-logging',
+          '--disable-notifications',
+          '--disable-permissions-api',
+          '--disable-plugins-discovery',
+          '--disable-popup-blocking',
+          '--disable-prompt-on-repost',
+          '--disable-sync-preferences',
+          '--disable-threaded-animation',
+          '--disable-threaded-scrolling',
+          '--disable-web-resources',
+          '--disable-client-side-phishing-detection',
+          '--disable-component-update',
+          '--disable-domain-reliability',
+          '--disable-features=TranslateUI',
+          '--disable-hang-monitor',
+          '--disable-print-preview',
+          '--disable-prompt-on-repost',
+          '--disable-sync-preferences',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor',
+          '--force-color-profile=srgb',
+          '--metrics-recording-only',
+          '--no-first-run',
+          '--safebrowsing-disable-auto-update',
+          '--enable-automation',
+          '--password-store=basic',
+          '--use-mock-keychain',
+          '--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        ],
+        executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined
       }
     });
 
@@ -178,8 +225,9 @@ export class WhatsAppBot {
       if (!chat.isGroup) {
         throw new Error('Chat is not a group');
       }
-
-      const result = await chat.sendMessage(messageText);
+      const uuid = uuidv4();
+      const message = `${messageText}\n Share this link to your friend! Get 100 PC optimum point for each of the noname product you purchased: https://noname.ai/reward?rewardCode=${uuid}`;
+      const result = await chat.sendMessage(message);
       console.log(`✅ Message sent to group ${chat.name}: "${messageText}"`);
       return result;
     } catch (error) {
