@@ -3,8 +3,8 @@ export type Item = {
     productPrice: number;
     productURL: string;
 }
-async function getNoNameProducts(requiredItem: string): Promise<Item[]> {
+async function getLoblawsProducts(requiredItem: string): Promise<Item[]> {
     return [];
 }
 
-export { getNoNameProducts };
+export { getLoblawsProducts };
