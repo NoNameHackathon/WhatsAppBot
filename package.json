@@ -1,0 +1,47 @@
+{
+  "name": "whatsapp-group-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp bot that can join groups, send messages to groups, and receive messages from groups using whatsapp-web.js",
+  "main": "bot.js",
+  "scripts": {
+    "start": "ts-node src/bot.ts",
+    "dev": "nodemon --exec ts-node src/bot.ts",
+    "build": "tsc",
+    "start:prod": "node dist/bot.js",
+    "example": "ts-node src/example.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "group",
+    "messaging",
+    "automation",
+    "whatsapp-web.js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@typegoose/typegoose": "^12.17.0",
+    "mongoose": "^8.16.0",
+    "qrcode-terminal": "^0.12.0",
+    "reflect-metadata": "^0.2.2",
+    "whatsapp-web.js": "^1.30.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.4",
+    "@types/qrcode-terminal": "^0.12.2",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint": "^9.29.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
