@@ -1,5 +1,5 @@
 # Multi-stage build for efficiency
-FROM node:18-alpine AS builder
+FROM node:21-alpine AS builder
 
 # Install build dependencies
 RUN apk add --no-cache python3 make g++
@@ -21,7 +21,7 @@ COPY src ./src
 RUN npm run build
 
 # Production stage
-FROM node:18-alpine
+FROM node:21-alpine
 
 # Install runtime dependencies for puppeteer/whatsapp-web.js
 RUN apk add --no-cache \
