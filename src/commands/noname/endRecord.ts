@@ -77,7 +77,7 @@ const endRecordCommand: IBotCommand = {
       const summaryResponse = await generateSummary(conversationText);
       
       // Update record with summary and items
-      record.summary = summaryResponse.summary;
+      record.summary = summaryResponse.info;
       record.items = summaryResponse.items;
       record.status = RecordStatus.COMPLETED;
       
@@ -99,7 +99,7 @@ const endRecordCommand: IBotCommand = {
 
       // Format the response message
       let responseMessage = `✅ *Recording completed!*\n\n`;
-      responseMessage += `**Summary:** ${summaryResponse.summary}\n\n`;
+      responseMessage += `**Summary:** ${summaryResponse.info}\n\n`;
       responseMessage += `**Items we will need:**\n`;
 
       for (const { item, products } of itemsWithProducts) {

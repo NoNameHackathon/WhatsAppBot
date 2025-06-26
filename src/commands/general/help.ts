@@ -27,6 +27,10 @@ const helpCommand: IBotCommand = {
 • !weather [city] - Get weather information
 • !random - Randomly select and resend one of the last 10 messages
 
+*Noname Commands:*
+• !start-record, !record - Start a new recording
+• !end-record, !stop-record, !stop, !summary - End a recording
+
 *Usage:* Use \`!help [command]\` for detailed help on a specific command.
 
 🔧 *Tip:* Commands are case-insensitive and you can use aliases!`;
