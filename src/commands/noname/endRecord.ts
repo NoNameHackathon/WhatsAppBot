@@ -111,9 +111,7 @@ const endRecordCommand: IBotCommand = {
             const urlText = product.productURL ? ` - ${product.productURL}` : '';
             responseMessage += `  - ${product.productName}${priceText}${urlText}\n`;
           }
-        } else {
-          responseMessage += `  - No products found\n`;
-        }
+        } 
         responseMessage += '\n';
       }
 
