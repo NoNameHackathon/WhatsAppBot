@@ -33,7 +33,58 @@ RUN apk add --no-cache \
     ca-certificates \
     ttf-freefont \
     nodejs \
-    yarn
+    yarn \
+    # Additional libraries required for Chromium
+    atk \
+    atk-dev \
+    atspi \
+    cairo \
+    cairo-dev \
+    cups \
+    cups-dev \
+    dbus \
+    dbus-dev \
+    expat \
+    expat-dev \
+    fontconfig \
+    fontconfig-dev \
+    gdk-pixbuf \
+    gdk-pixbuf-dev \
+    glib \
+    glib-dev \
+    gtk+3.0 \
+    gtk+3.0-dev \
+    libdrm \
+    libdrm-dev \
+    libx11 \
+    libx11-dev \
+    libxcomposite \
+    libxcomposite-dev \
+    libxcursor \
+    libxcursor-dev \
+    libxdamage \
+    libxdamage-dev \
+    libxext \
+    libxext-dev \
+    libxfixes \
+    libxfixes-dev \
+    libxi \
+    libxi-dev \
+    libxrandr \
+    libxrandr-dev \
+    libxrender \
+    libxrender-dev \
+    libxss \
+    libxss-dev \
+    libxtst \
+    libxtst-dev \
+    mesa \
+    mesa-dev \
+    pango \
+    pango-dev \
+    pixman \
+    pixman-dev \
+    xvfb
 
 # Tell Puppeteer to use installed Chromium package
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
