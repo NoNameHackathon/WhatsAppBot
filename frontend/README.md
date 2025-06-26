@@ -1,79 +1,125 @@
 # Food Journey Frontend
 
-A modern React application built with Vite and Tailwind CSS for the Food Journey collaborative cooking platform.
+A modern React landing page for the Food Journey WhatsApp community, built with **TypeScript**, **React**, and **Chakra UI**.
 
-## 🍽️ Features
+## Features
 
-- **Invite Link Input**: Clean, centered input for users to enter their Food Journey invite links
-- **Modern Design**: Beautiful gradient background with a clean white card design
-- **Responsive Layout**: Works great on desktop and mobile devices
-- **Interactive Elements**: Hover effects and smooth transitions
-- **Feature Showcase**: Displays key features like dinner parties, road trips, group recipes, and fridge sharing
+- 🍽️ Beautiful landing page with "Food Journey" branding
+- 💬 WhatsApp invite link input with validation
+- 🎨 Modern UI with Chakra UI components
+- 📱 Responsive design
+- ✅ Form validation and user feedback
+- 🎯 Smooth animations and hover effects
+- 🔒 **TypeScript** for type safety and better development experience
 
-## 🚀 Tech Stack
+## Getting Started
 
-- **React 18** with TypeScript
-- **Vite** for fast development and building
-- **Tailwind CSS** for utility-first styling
-- **PostCSS** for CSS processing
+### Prerequisites
 
-## 🛠️ Getting Started
+- Node.js (version 14 or higher)
+- npm or yarn
 
-1. Install dependencies:
+### Installation
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the development server:
+3. Start the development server:
    ```bash
-   npm run dev
+   npm start
    ```
 
-3. Open [http://localhost:5173](http://localhost:5173) in your browser
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## 📁 Project Structure
+## Available Scripts
 
-- `src/App.tsx` - Main application component with the invite form
-- `src/index.css` - Tailwind CSS imports and base styles
-- `tailwind.config.js` - Tailwind configuration with custom green color palette
-- `postcss.config.js` - PostCSS configuration for Tailwind
+- `npm start` - Runs the app in development mode
+- `npm build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm eject` - Ejects from Create React App (one-way operation)
 
-## 🎯 Features Displayed
+## Technologies Used
 
-The landing page showcases the core features of the Food Journey platform:
+- **React 18** with TypeScript
+- **Chakra UI 2.8.2** - Modern component library
+- **TypeScript 4.9.5** - Type safety and better DX
+- **React Icons** - Beautiful icon library
+- **Emotion** - CSS-in-JS styling
+- **Framer Motion** - Smooth animations
 
-- **🎉 Dinner Parties**: Collaborative dinner planning
-- **🚗 Road Trips**: Food adventures on the go
-- **🤝 Group Recipes**: Shared cooking experiences
-- **📸 Fridge Sharing**: Smart ingredient coordination
+## Project Structure
 
-## 🎨 Design Philosophy
-
-The design emphasizes:
-- Clean, modern aesthetics
-- Food-focused color palette (warm oranges and fresh greens)
-- Intuitive user experience
-- Clear call-to-action with the green "Join Journey" button
-- Visual hierarchy that guides users to the main action
-
-## 🔧 Development Notes
-
-- The submit button currently logs the invite link to the browser console for development purposes
-- Custom primary color palette defined in Tailwind config for consistent branding
-- Mobile-first responsive design that adapts beautifully to different screen sizes
-- Form validation requires users to enter an invite link before submission
-
-## 🏗️ Building for Production
-
-```bash
-npm run build
+```
+frontend/
+├── public/
+│   ├── index.html
+│   └── manifest.json
+├── src/
+│   ├── App.tsx          # Main application component (TypeScript)
+│   └── index.tsx        # Application entry point (TypeScript)
+├── package.json
+├── tsconfig.json        # TypeScript configuration
+└── README.md
 ```
 
-The built files will be in the `dist/` directory, ready for deployment.
+## TypeScript Features
 
-## 📝 Next Steps
+- **Type Safety**: All components and functions are properly typed
+- **Interface Definitions**: Clear type definitions for props and state
+- **Event Handling**: Properly typed event handlers for forms and inputs
+- **State Management**: Typed useState hooks for better development experience
+- **Component Props**: TypeScript interfaces for component props
 
-- Connect the form submission to the backend API
-- Add error handling and loading states
-- Implement invite link validation
-- Add animations and micro-interactions
+## Key TypeScript Implementations
+
+```typescript
+// Properly typed component
+const App: React.FC = () => {
+  const [whatsappLink, setWhatsappLink] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  
+  // Typed event handler
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+    // Implementation
+  };
+  
+  // Typed input change handler
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setWhatsappLink(e.target.value);
+  };
+};
+```
+
+## Features
+
+- **Modern Design**: Clean, professional landing page with gradient text and smooth animations
+- **Form Validation**: Validates WhatsApp invite links and provides user feedback
+- **Responsive**: Works perfectly on desktop, tablet, and mobile devices
+- **Accessibility**: Built with accessibility best practices using Chakra UI
+- **User Experience**: Loading states, toast notifications, and smooth interactions
+- **Type Safety**: Full TypeScript support for better development and maintenance
+
+## Customization
+
+The app uses a custom Chakra UI theme with:
+- Brand colors in green shades
+- Inter font family
+- Custom hover effects and animations
+- Responsive spacing and sizing
+
+You can modify the theme in `src/index.tsx` to match your brand colors and preferences.
+
+## Development Benefits with TypeScript
+
+- **Better IDE Support**: Enhanced autocomplete and IntelliSense
+- **Catch Errors Early**: Type checking during development
+- **Improved Refactoring**: Safe refactoring with type checking
+- **Better Documentation**: Types serve as inline documentation
+- **Team Collaboration**: Clear interfaces and type definitions 
