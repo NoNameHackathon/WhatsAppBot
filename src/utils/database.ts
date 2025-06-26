@@ -4,6 +4,9 @@ import { Message as WWebMessage } from 'whatsapp-web.js';
 import { Message } from '../models/Message';
 import { User } from '../models/User';
 import { MessageDirection } from '../types';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export class DatabaseManager {
   private isConnected = false;
@@ -189,6 +192,24 @@ export class DatabaseManager {
     } catch (error) {
       console.error('❌ Error fetching recent messages:', error);
       return [];
+    }
+  }
+
+  public async getRecentMessagesByChatIdAndTimestamp(chatId: string, startTimestamp: number, endTimestamp: number): Promise<string> {
+
+    try {
+      const messages = await Message.find({ 
+        chatId,
+        timestamp: { $gte: startTimestamp, $lte: endTimestamp }
+      })
+      .sort({ timestamp: 1 }) // Sort by timestamp ascending (oldest first)
+      .lean();
+      // get all the conversation text from the messages
+      const conversationText = messages.map((message) => message.body).join(" ");
+      return conversationText;
+    } catch (error) {
+      console.error('❌ Error fetching recent messages:', error);
+      return "";
     }
   }
 
