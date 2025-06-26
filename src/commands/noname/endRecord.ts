@@ -62,7 +62,7 @@ const endRecordCommand: IBotCommand = {
       }
 
       // Get conversation text from the time range
-      const conversationText = await db.getRecentMessagesByChatIdAndTimestamp(
+      const conversationText = await db.getRecentNonBotMessagesByChatIdAndTimestamp(
         chatId,
         record.startTimestamp!,
         record.endTimestamp!
@@ -74,10 +74,10 @@ const endRecordCommand: IBotCommand = {
       }
 
       // Generate summary and items
-      const summaryResponse = await generateSummary([conversationText]);
+      const summaryResponse = await generateSummary(conversationText);
       
       // Update record with summary and items
-      record.summary = summaryResponse.summary;
+      record.summary = summaryResponse.info;
       record.items = summaryResponse.items;
       record.status = RecordStatus.COMPLETED;
       
@@ -99,7 +99,7 @@ const endRecordCommand: IBotCommand = {
 
       // Format the response message
       let responseMessage = `✅ *Recording completed!*\n\n`;
-      responseMessage += `**Summary:** ${summaryResponse.summary}\n\n`;
+      responseMessage += `**Summary:** ${summaryResponse.info}\n\n`;
       responseMessage += `**Items we will need:**\n`;
 
       for (const { item, products } of itemsWithProducts) {
@@ -111,9 +111,7 @@ const endRecordCommand: IBotCommand = {
             const urlText = product.productURL ? ` - ${product.productURL}` : '';
             responseMessage += `  - ${product.productName}${priceText}${urlText}\n`;
           }
-        } else {
-          responseMessage += `  - No products found\n`;
-        }
+        } 
         responseMessage += '\n';
       }
 
