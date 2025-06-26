@@ -18,7 +18,7 @@ async function generateSummary(conversationHistory: string): Promise<GenerateSum
             1. Info: A recipe with instructions, trip itinerary with activities, or event plan with timeline
             2. Items: A practical shopping/packing list of specific items they will need
             
-            Always suggest at least 3 specific items, even if the conversation is general.
+            Please generate as many items as required.
             Focus on creating actionable content.
     `;
 
