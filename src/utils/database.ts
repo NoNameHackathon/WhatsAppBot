@@ -195,11 +195,12 @@ export class DatabaseManager {
     }
   }
 
-  public async getRecentMessagesByChatIdAndTimestamp(chatId: string, startTimestamp: number, endTimestamp: number): Promise<string> {
+  public async getRecentNonBotMessagesByChatIdAndTimestamp(chatId: string, startTimestamp: number, endTimestamp: number): Promise<string> {
 
     try {
       const messages = await Message.find({ 
         chatId,
+        direction: MessageDirection.INCOMING,
         timestamp: { $gte: startTimestamp, $lte: endTimestamp }
       })
       .sort({ timestamp: 1 }) // Sort by timestamp ascending (oldest first)

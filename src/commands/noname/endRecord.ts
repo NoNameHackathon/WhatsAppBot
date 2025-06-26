@@ -62,7 +62,7 @@ const endRecordCommand: IBotCommand = {
       }
 
       // Get conversation text from the time range
-      const conversationText = await db.getRecentMessagesByChatIdAndTimestamp(
+      const conversationText = await db.getRecentNonBotMessagesByChatIdAndTimestamp(
         chatId,
         record.startTimestamp!,
         record.endTimestamp!
