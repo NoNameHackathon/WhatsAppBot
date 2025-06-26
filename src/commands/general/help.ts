@@ -25,6 +25,7 @@ const helpCommand: IBotCommand = {
 *Utility Commands:*
 • !time - Show current time
 • !weather [city] - Get weather information
+• !random - Randomly select and resend one of the last 10 messages
 
 *Usage:* Use \`!help [command]\` for detailed help on a specific command.
 

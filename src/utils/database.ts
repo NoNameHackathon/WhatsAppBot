@@ -174,6 +174,25 @@ export class DatabaseManager {
   }
 
   /**
+   * Get the last N messages from a specific chat
+   */
+  public async getRecentMessages(chatId: string, limit: number = 10): Promise<any[]> {
+    try {
+      return await Message.find({ 
+        chatId,
+        direction: MessageDirection.INCOMING, // Only get incoming messages (not bot messages)
+        body: { $ne: '' } // Exclude empty messages
+      })
+      .sort({ timestamp: -1 }) // Sort by timestamp descending (newest first)
+      .limit(limit)
+      .lean(); // Return plain objects instead of Mongoose documents
+    } catch (error) {
+      console.error('❌ Error fetching recent messages:', error);
+      return [];
+    }
+  }
+
+  /**
    * Check if database is connected
    */
   public get connected(): boolean {
