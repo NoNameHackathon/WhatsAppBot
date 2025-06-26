@@ -45,18 +45,51 @@ const App: React.FC = () => {
 
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const body = JSON.stringify({
+        inviteLink: whatsappLink
+      });
+      console.log(body)
+      const response = await fetch('http://108.61.252.153:3001/invite', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        toast({
+          title: 'Success!',
+          description: data.message || 'Your WhatsApp link has been submitted successfully!',
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
+        });
+        setWhatsappLink('');
+      } else {
+        const errorData = await response.json().catch(() => ({}));
+        toast({
+          title: 'Error',
+          description: errorData.message || `Server error: ${response.status}`,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      console.error('API call failed:', error);
       toast({
-        title: 'Success!',
-        description: 'Your WhatsApp link has been submitted successfully!',
-        status: 'success',
+        title: 'Connection Error',
+        description: 'Failed to connect to the server. Please try again later.',
+        status: 'error',
         duration: 5000,
         isClosable: true,
       });
-      setWhatsappLink('');
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
