@@ -10,6 +10,7 @@
     "start:prod": "node dist/bot.js",
     "example": "ts-node src/example.ts",
     "web": "ts-node src/web.ts",
+    "web:prod": "node dist/web.js",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "test": "echo \"No tests specified yet\" && exit 0",

@@ -71,4 +71,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD node -e "require('http').get('http://localhost:3001/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1); })"
 
 # Run the web server
-CMD ["npm", "run", "web"] 
+CMD ["npm", "run", "web:prod"] 
