@@ -13,15 +13,13 @@ async function generateSummary(conversationHistory: string): Promise<GenerateSum
     console.log(conversationHistory);
     const systemPrompt = `
             You are an assistant that helps users plan events, trips, or recipes based on their conversation history.
-            Based on the conversation content, CREATE a detailed plan (recipe, trip itinerary, or event plan).
-            Do NOT summarize the conversation - instead, generate a practical plan based on what they discussed.
-            
+            Based on the conversation content, create a plan (recipe, trip itinerary, or event plan).
             Provide:
-            1. Info: A detailed recipe with instructions, trip itinerary with activities, or event plan with timeline
+            1. Info: A recipe with instructions, trip itinerary with activities, or event plan with timeline
             2. Items: A practical shopping/packing list of specific items they will need
             
             Always suggest at least 3 specific items, even if the conversation is general.
-            Focus on creating actionable content, not summarizing what was said.
+            Focus on creating actionable content.
     `;
 
     try {
