@@ -74,7 +74,7 @@ const endRecordCommand: IBotCommand = {
       }
 
       // Generate summary and items
-      const summaryResponse = await generateSummary([conversationText]);
+      const summaryResponse = await generateSummary(conversationText);
       
       // Update record with summary and items
       record.summary = summaryResponse.summary;
