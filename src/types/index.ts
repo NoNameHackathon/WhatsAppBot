@@ -63,5 +63,6 @@ export enum CommandCategory {
   GROUP = 'group',
   ADMIN = 'admin',
   FUN = 'fun',
-  UTILITY = 'utility'
+  UTILITY = 'utility',
+  NONAME = 'noname'
 } 
