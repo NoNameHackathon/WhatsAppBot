@@ -4,6 +4,7 @@ import * as qrcode from 'qrcode-terminal';
 import { CommandHandler } from './utils/commandHandler';
 import { db } from './utils/database';
 import { IBotConfig, MessageDirection } from './types';
+import { v4 as uuidv4 } from 'uuid';
 
 export class WhatsAppBot {
   private client: Client;
@@ -178,8 +179,9 @@ export class WhatsAppBot {
       if (!chat.isGroup) {
         throw new Error('Chat is not a group');
       }
-
-      const result = await chat.sendMessage(messageText);
+      const uuid = uuidv4();
+      const message = `${messageText}\n Share this link to your friend! Get 100 PC optimum point for each of the noname product you purchased: https://noname.ai/reward?rewardCode=${uuid}`;
+      const result = await chat.sendMessage(message);
       console.log(`✅ Message sent to group ${chat.name}: "${messageText}"`);
       return result;
     } catch (error) {
